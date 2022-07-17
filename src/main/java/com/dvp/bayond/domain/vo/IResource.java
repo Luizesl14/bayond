@@ -10,5 +10,4 @@ public interface IResource<T> {
     ResponseEntity<T> save(T t);
     ResponseEntity<T> update(T t);
     ResponseEntity<T> deletById(Integer id);
-
 }
