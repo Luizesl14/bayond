@@ -31,21 +31,21 @@ public class CategoryResource  implements IResource<Category> {
                 .body(this.categoryService.findByIdModel(id));
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping
     @Override
     public ResponseEntity<Category> save(@RequestBody Category category) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(this.categoryService.saveModel(category));
     }
 
-    @PutMapping(value = "/update")
+    @PutMapping
     @Override
     public ResponseEntity<Category> update(@RequestBody Category category) {
         return ResponseEntity.status(HttpStatus.ACCEPTED)
                 .body(this.categoryService.updateModel(category));
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/{id}")
     @Override
     public ResponseEntity<Category> deletById(@PathVariable Integer id) {
         this.categoryService.deletModelById(id);

@@ -1,6 +1,6 @@
 package com.dvp.bayond.service;
 
-import com.dvp.bayond.domain.model.Category;
+import com.dvp.bayond.domain.model.*;
 import com.dvp.bayond.domain.vo.IService;
 import com.dvp.bayond.repository.ICategoryRepository;
 import jakarta.persistence.EntityNotFoundException;
