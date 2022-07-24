@@ -31,7 +31,7 @@ public class CategoryService implements IService<Category> {
 
     @Override
     public Category saveModel(Category category) {
-        return null;
+        return this.categoryRepository.save(category);
     }
 
     @Override
