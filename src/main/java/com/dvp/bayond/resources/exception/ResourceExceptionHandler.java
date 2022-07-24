@@ -1,5 +1,6 @@
 package com.dvp.bayond.resources.exception;
 
+import com.dvp.bayond.service.exception.NullObjectException;
 import com.dvp.bayond.service.exception.ObjectConflictException;
 import com.dvp.bayond.service.exception.ObjectNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,5 +28,14 @@ public class ResourceExceptionHandler {
                 HttpStatus.CONFLICT.value(), e.getMessage(), System.currentTimeMillis()
         );
         return ResponseEntity.status(HttpStatus.CONFLICT).body(err);
+    }
+
+    @ExceptionHandler(NullObjectException.class)
+    public ResponseEntity<StandarError>nullObject
+            (ObjectNotFoundException e, HttpServletRequest request){
+        StandarError err = new StandarError(
+                HttpStatus.NO_CONTENT.value(), e.getMessage(), System.currentTimeMillis()
+        );
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(err);
     }
 }

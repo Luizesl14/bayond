@@ -1,21 +1,17 @@
 package com.dvp.bayond.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "product")
-public class Product implements Serializable {
+public class City implements Serializable {
 
     @Serial
     private static final long serialVersionUID =1L;
@@ -28,22 +24,16 @@ public class Product implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
-    private Double price;
-
-    @JsonIgnoreProperties(value = "products")
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "product_category",
-            joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Category> categories = new ArrayList<>();
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "state_id")
+    private State state;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return Objects.equals(id, product.id);
+        City city = (City) o;
+        return Objects.equals(id, city.id);
     }
 
     @Override

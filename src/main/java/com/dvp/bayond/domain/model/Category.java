@@ -1,6 +1,5 @@
 package com.dvp.bayond.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,8 +27,19 @@ public class Category implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "categories")
     private List<Product> products = new ArrayList<>();
+
+
+    public Category(Integer id, String name, List<Product> products) {
+        this.id = id;
+        this.name = name;
+        this.products = products;
+    }
+
+    public Category() {
+    }
+
 
     @Override
     public boolean equals(Object o) {
