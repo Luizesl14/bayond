@@ -34,8 +34,8 @@ public class Product implements Serializable {
     @JsonIgnoreProperties(value = "products")
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "product_category",
-            joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories = new ArrayList<>();
 
     @Override
