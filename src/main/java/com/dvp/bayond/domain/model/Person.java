@@ -32,6 +32,9 @@ public class Person implements Serializable {
     @CollectionTable(name = "phones")
     private Set<String> phones =  new HashSet<>();
 
+    @OneToMany(mappedBy = "person")
+    private List<StoreOrder> orders = new ArrayList<>();
+
 
     public Person(Integer id, String name,
                   String email, String taxId, ClinetType type) {
@@ -98,6 +101,14 @@ public class Person implements Serializable {
 
     public void setPhones(Set<String> phones) {
         this.phones = phones;
+    }
+
+    public List<StoreOrder> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<StoreOrder> orders) {
+        this.orders = orders;
     }
 
     @Override

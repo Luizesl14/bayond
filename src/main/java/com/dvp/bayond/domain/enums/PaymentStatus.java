@@ -4,28 +4,28 @@ import lombok.Getter;
 
 import java.util.Optional;
 
-
 @Getter
-public enum ClinetType {
+public enum PaymentStatus {
 
-    NATURAL_PERSON(1, "Pessoa Fisica"),
-    LEGAL_PERSON(2, "Pessoa Jurídica");
+    PENDING(1, "Pendente"),
+    SETTLED(2, "Quitado"),
+    CANCELED(3, "Cancelado");
 
     private Integer cod;
     private String description;
 
-    ClinetType(Integer cod, String description) {
+    PaymentStatus(Integer cod, String description) {
         this.cod = cod;
         this.description = description;
     }
 
-    public static  ClinetType toEnum(Integer cod){
+    public static  PaymentStatus toEnum(Integer cod){
         Optional.of(cod).orElse(null);
 
-        for(ClinetType x : ClinetType.values()){
+        for(PaymentStatus x : PaymentStatus.values()){
             if(cod.equals(x.getCod()))
                 return x;
         }
-       throw  new IllegalArgumentException("Codigo invalido!");
+        throw  new IllegalArgumentException("Codigo invalido!");
     }
 }
